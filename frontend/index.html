@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>政策通 &amp; 职业顾问 - AI 智能助手</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- marked.js 用于 Markdown 渲染 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">📋 政策通</h1>
+                <p class="logo-sub">AI 职业顾问</p>
+            </div>
+
+            <button class="new-chat-btn" id="newChatBtn">
+                ＋ 新对话
+            </button>
+
+            <!-- 模式切换 -->
+            <div class="mode-switch">
+                <button class="mode-btn active" data-mode="search" id="modeSearch">🔍 AI 搜索</button>
+                <button class="mode-btn" data-mode="rag" id="modeRAG">📚 知识库 RAG</button>
+            </div>
+
+            <div class="quick-actions" id="quickActions">
+                <h3 class="section-title">快捷入口</h3>
+                <button class="quick-btn" data-query="最近有什么新的就业补贴政策？">
+                    💰 就业补贴查询
+                </button>
+                <button class="quick-btn" data-query="2026年互联网行业发展趋势和薪资水平如何？">
+                    📊 行业薪资趋势
+                </button>
+                <button class="quick-btn" data-query="我是一名Java开发工程师，有3年经验，帮我优化简历">
+                    📝 简历优化建议
+                </button>
+                <button class="quick-btn" data-query="产品经理面试常见问题及回答技巧">
+                    🎯 面试辅导
+                </button>
+                <button class="quick-btn" data-query="深圳最新的人才引进和落户政策是什么？">
+                    🏠 人才政策解读
+                </button>
+                <button class="quick-btn" data-query="灵活就业人员怎么缴纳社保？有什么补贴？">
+                    🛡️ 社保政策咨询
+                </button>
+            </div>
+
+            <!-- RAG 面板 -->
+            <div class="rag-panel" id="ragPanel" style="display:none;">
+                <h3 class="section-title">📁 知识库管理</h3>
+                <label class="upload-btn" id="uploadLabel">
+                    ＋ 上传 PDF 政策文件
+                    <input type="file" id="pdfUpload" accept=".pdf" hidden multiple>
+                </label>
+                <div class="upload-status" id="uploadStatus"></div>
+                <div class="doc-list" id="docList">
+                    <p class="empty-hint">暂无文档，上传 PDF 开始</p>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <p class="disclaimer">AI 生成内容仅供参考<br>重要决策请核实官方信息</p>
+            </div>
+        </aside>
+
+        <!-- 主聊天区 -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <h2>政策通 &amp; 职业顾问</h2>
+                <span class="status-indicator" id="statusIndicator">🟢 在线</span>
+            </header>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- 欢迎消息 -->
+                <div class="welcome-message">
+                    <div class="welcome-icon">🤖</div>
+                    <h2>你好！我是你的 AI 政策 &amp; 职业顾问</h2>
+                    <p>我可以帮你：</p>
+                    <ul>
+                        <li>🔍 <strong>搜索最新政策</strong> — 就业、人才、补贴、社保，自动查最新</li>
+                        <li>📖 <strong>解读官方文件</strong> — 复杂政策说人话，告诉你该怎么申请</li>
+                        <li>💼 <strong>分析行业趋势</strong> — 薪资水平、岗位需求、技能要求</li>
+                        <li>📝 <strong>优化简历</strong> — 针对岗位给出具体修改建议</li>
+                        <li>🎯 <strong>面试辅导</strong> — 常见问题、回答思路、模拟练习</li>
+                    </ul>
+                    <p class="welcome-hint">👇 直接提问，或点击左侧快捷入口开始</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <textarea
+                        id="chatInput"
+                        placeholder="输入你的问题，例如：深圳2026年人才补贴政策..."
+                        rows="1"
+                        maxlength="5000"
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn" title="发送">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p class="input-hint">Enter 发送，Shift+Enter 换行</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

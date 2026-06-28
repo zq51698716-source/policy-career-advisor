@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+
+# Environment
+.env
+.env.local
+.env.prod
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project data directories
+chroma_db/
+rag_db/
+uploads/*.pdf
+
+# PDF files (personal data)
+*.pdf
+
+# Keep directory structure
+!uploads/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
